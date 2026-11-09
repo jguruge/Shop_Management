@@ -1,0 +1,6 @@
+@ShopManagement.Api_HostAddress = http://localhost:5240
+
+GET {{ShopManagement.Api_HostAddress}}/api/products
+Accept: application/json
+
+###

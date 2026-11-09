@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; }
+.layout { display: flex; min-height: 100vh; }
+.sidebar { width: 220px; padding: 1rem; background: #1f2937; color: #fff; }
+.sidebar nav { display: flex; flex-direction: column; gap: 0.5rem; }
+.sidebar a { color: #d1d5db; text-decoration: none; }
+.sidebar a.active { color: #fff; font-weight: 600; }
+.content { flex: 1; padding: 1.5rem; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+.error { color: #dc2626; }
