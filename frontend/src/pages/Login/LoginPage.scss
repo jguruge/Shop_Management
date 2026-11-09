@@ -1,0 +1,33 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-05;
+  background: var(--cds-background);
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 26rem;
+  padding: $spacing-07;
+  background: var(--cds-layer-01);
+  border-top: 4px solid var(--cds-interactive);
+}
+
+.login-title {
+  @include type-style('heading-05');
+}
+
+.login-subtitle {
+  margin-top: $spacing-03;
+  color: var(--cds-text-secondary);
+}
+
+.login-button {
+  width: 100%;
+  max-width: none;
+}

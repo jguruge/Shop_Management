@@ -1,0 +1,12 @@
+namespace ShopManagement.Api.Domain;
+
+public class Product : BaseEntity
+{
+    public required string Name { get; set; }
+    public string? Sku { get; set; }
+    public decimal Price { get; set; }
+    public int StockQuantity { get; set; }
+
+    public int? CategoryId { get; set; }
+    public Category? Category { get; set; }
+}

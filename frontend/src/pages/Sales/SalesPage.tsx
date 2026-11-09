@@ -1,3 +1,8 @@
 export default function SalesPage() {
-  return <h1>Sales</h1>
+  return (
+    <div className="page-header">
+      <h1>Sales</h1>
+      <p>Coming soon.</p>
+    </div>
+  )
 }

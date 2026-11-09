@@ -1,3 +1,8 @@
 export default function CustomersPage() {
-  return <h1>Customers</h1>
+  return (
+    <div className="page-header">
+      <h1>Customers</h1>
+      <p>Coming soon.</p>
+    </div>
+  )
 }

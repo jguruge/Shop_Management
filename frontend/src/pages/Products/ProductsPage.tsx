@@ -1,35 +1,52 @@
+import {
+  DataTableSkeleton,
+  InlineNotification,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@carbon/react'
 import { useProducts } from '../../hooks/useProducts'
 import { formatCurrency } from '../../utils/format'
+
+const headers = ['Name', 'SKU', 'Price', 'Stock']
 
 export default function ProductsPage() {
   const { products, loading, error } = useProducts()
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p className="error">{error}</p>
+  if (loading) return <DataTableSkeleton headers={headers.map((h) => ({ header: h, key: h }))} />
+  if (error) return <InlineNotification kind="error" title="Could not load products" subtitle={error} hideCloseButton />
 
   return (
-    <>
-      <h1>Products</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>SKU</th>
-            <th>Price</th>
-            <th>Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((p) => (
-            <tr key={p.id}>
-              <td>{p.name}</td>
-              <td>{p.sku ?? '-'}</td>
-              <td>{formatCurrency(p.price)}</td>
-              <td>{p.stockQuantity}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
+    <TableContainer title="Products" description="All products in the shop">
+      <Table>
+        <TableHead>
+          <TableRow>
+            {headers.map((h) => (
+              <TableHeader key={h}>{h}</TableHeader>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {products.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={headers.length}>No products yet.</TableCell>
+            </TableRow>
+          ) : (
+            products.map((p) => (
+              <TableRow key={p.id}>
+                <TableCell>{p.name}</TableCell>
+                <TableCell>{p.sku ?? '—'}</TableCell>
+                <TableCell>{formatCurrency(p.price)}</TableCell>
+                <TableCell>{p.stockQuantity}</TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
